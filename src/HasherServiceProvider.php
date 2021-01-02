@@ -13,13 +13,25 @@ class HasherServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
-
-        // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
         }
+
+        app('hash')->extend('sha256', function () {
+            return new Sha256Hasher;
+        });
+
+        app('hash')->extend('sha512', function () {
+            return new Sha512Hasher;
+        });
+
+        app('hash')->extend('sha1', function () {
+            return new Sha1Hasher;
+        });
+
+        app('hash')->extend('md5', function () {
+            return new Md5Hasher;
+        });
     }
 
     /**
@@ -31,20 +43,20 @@ class HasherServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/hasher.php', 'hasher');
 
-        $this->app->singleton('hasher.sha256', function ($app) {
+        $this->app->singleton('hash.sha256', function ($app) {
+            return new Sha256Hasher;
+        });
+
+        $this->app->singleton('hash.sha512', function ($app) {
             return new Sha512Hasher;
         });
 
-        $this->app->singleton('hasher.sha512', function ($app) {
-            return new Sha512Hasher;
-        });
-
-        $this->app->singleton('hasher.md5', function ($app) {
-            return new Md5Hasher;
-        });
-
-        $this->app->singleton('hasher.sha1', function ($app) {
+        $this->app->singleton('hash.sha1', function ($app) {
             return new Sha1Hasher;
+        });
+
+        $this->app->singleton('hash.md5', function ($app) {
+            return new Md5Hasher;
         });
     }
 
@@ -56,10 +68,10 @@ class HasherServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            'hasher.sha256',
-            'hasher.sha512',
-            'hasher.md5',
-            'hasher.sha1',
+            'hash.sha256',
+            'hash.sha512',
+            'hash.sha1',
+            'hash.md5',
         ];
     }
 
@@ -70,7 +82,6 @@ class HasherServiceProvider extends ServiceProvider
      */
     protected function bootForConsole(): void
     {
-        // Publishing the configuration file.
         $this->publishes([
             __DIR__.'/../config/hasher.php' => config_path('hasher.php'),
         ], 'hasher.config');
