@@ -13,8 +13,6 @@ class HasherServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'cymatica');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'cymatica');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
@@ -33,9 +31,20 @@ class HasherServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/hasher.php', 'hasher');
 
-        // Register the service the package provides.
-        $this->app->singleton('hasher', function ($app) {
-            return new Hasher;
+        $this->app->singleton('hasher.sha256', function ($app) {
+            return new Sha512Hasher;
+        });
+
+        $this->app->singleton('hasher.sha512', function ($app) {
+            return new Sha512Hasher;
+        });
+
+        $this->app->singleton('hasher.md5', function ($app) {
+            return new Md5Hasher;
+        });
+
+        $this->app->singleton('hasher.sha1', function ($app) {
+            return new Sha1Hasher;
         });
     }
 
@@ -46,7 +55,12 @@ class HasherServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['hasher'];
+        return [
+            'hasher.sha256',
+            'hasher.sha512',
+            'hasher.md5',
+            'hasher.sha1',
+        ];
     }
 
     /**
@@ -61,20 +75,6 @@ class HasherServiceProvider extends ServiceProvider
             __DIR__.'/../config/hasher.php' => config_path('hasher.php'),
         ], 'hasher.config');
 
-        // Publishing the views.
-        /*$this->publishes([
-            __DIR__.'/../resources/views' => base_path('resources/views/vendor/cymatica'),
-        ], 'hasher.views');*/
-
-        // Publishing assets.
-        /*$this->publishes([
-            __DIR__.'/../resources/assets' => public_path('vendor/cymatica'),
-        ], 'hasher.views');*/
-
-        // Publishing the translation files.
-        /*$this->publishes([
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/cymatica'),
-        ], 'hasher.views');*/
 
         // Registering package commands.
         // $this->commands([]);
