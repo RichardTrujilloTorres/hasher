@@ -1,12 +1,12 @@
 {
     "name": "cymatica/hasher",
-    "description": ":package_description",
+    "description": "Cymatica Laravel Hasher",
     "license": "license",
     "authors": [
         {
-            "name": "author name",
-            "email": "author email",
-            "homepage": "author homepage"
+            "name": "Cymatica Dev Team",
+            "email": "dev@cymatica.io",
+            "homepage": "https://cymatica.io"
         }
     ],
     "homepage": "https://github.com/cymatica/hasher",
