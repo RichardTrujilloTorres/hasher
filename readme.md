@@ -3,8 +3,8 @@
 
 ## Introduction
 
-Expand upon Laravel out-of-the-box supported hasher drivers by simply specifying them through
-configuration and dynamic usage capabilities.
+Expand upon Laravel out-of-the-box supported hashing drivers by simply specifying them through
+configuration.
 
 ## Installation
 
@@ -14,7 +14,7 @@ composer req cymatica/hasher --prefer-dist
 
 ## Usage
 
-To use the hasher globally, set the driver in the hashing config file:
+To use the hasher globally (i.e. on authentication password), set the driver in the hashing config file:
 ```
 'driver' => 'sha512',
 ```
