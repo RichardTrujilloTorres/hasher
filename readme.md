@@ -1,4 +1,4 @@
-# Laravel Custom Harsher 
+# Laravel Custom Hasher
 
 
 ## Introduction
