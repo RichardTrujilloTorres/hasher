@@ -1,5 +1,6 @@
 # Laravel Custom Hasher
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/RichardTrujilloTorres/hasher/badges/quality-score.png?b=master&s=f49efdb789d17541e5a19634cd2f1e1af8ca5563)](https://scrutinizer-ci.com/g/RichardTrujilloTorres/hasher/?branch=master)
 
 ## Introduction
 
