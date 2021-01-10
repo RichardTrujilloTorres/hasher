@@ -5,7 +5,6 @@ namespace Cymatica\Hasher\Tests\Feature;
 use Cymatica\Hasher\Md5Hasher;
 use Cymatica\Hasher\Sha512Hasher;
 use Cymatica\Hasher\Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class HasherTest extends TestCase
 {
