@@ -6,7 +6,6 @@ use Illuminate\Contracts\Hashing\Hasher as HasherContract;
 use Illuminate\Hashing\AbstractHasher;
 use RuntimeException;
 
-
 abstract class Hasher extends AbstractHasher implements HasherContract
 {
     public function make($value, array $options = [])
@@ -36,5 +35,5 @@ abstract class Hasher extends AbstractHasher implements HasherContract
         return false;
     }
 
-    abstract function algorithm();
+    abstract public function algorithm();
 }

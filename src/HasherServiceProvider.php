@@ -86,7 +86,6 @@ class HasherServiceProvider extends ServiceProvider
             __DIR__.'/../config/hasher.php' => config_path('hasher.php'),
         ], 'hasher.config');
 
-
         // Registering package commands.
         // $this->commands([]);
     }
