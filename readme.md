@@ -2,6 +2,7 @@
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/RichardTrujilloTorres/hasher/badges/quality-score.png?b=master&s=f49efdb789d17541e5a19634cd2f1e1af8ca5563)](https://scrutinizer-ci.com/g/RichardTrujilloTorres/hasher/?branch=master)
 [![StyleCI](https://github.styleci.io/repos/326078625/shield?branch=master)](https://github.styleci.io/repos/326078625?branch=master)
+[![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
 
 ## Introduction
 
